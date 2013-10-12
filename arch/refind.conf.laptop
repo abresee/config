@@ -1,0 +1,31 @@
+# /boot/efi/EFI/refind/refind.conf
+timeout 3
+resolution 1366 768
+use_graphics_for linux
+scan_driver_dirs EFI/tools/drivers,drivers
+scanfor external,optical,manual
+scan_all_linux_kernels
+
+menuentry Arch {
+	icon EFI/refind/icons/os_arch.icns
+	volume Root
+	loader boot\vmlinuz-linux
+	initrd boot\initramfs-linux.img
+	options "root=/dev/sda3 acpi_backlight=vendor resume=UUID=2683175a-29fc-4a59-a239-87bdf6add55f rw rootfstype=ext4 systemd.unit=graphical.target"
+}
+
+menuentry Arch-CK {
+	icon EFI/refind/icons/os_arch.icns
+	volume Root
+	loader boot\vmlinuz-linux-ck
+	initrd boot\initramfs-linux-ck.img
+	options "root=/dev/sda3 acpi_backlight=vendor elevator=bfq resume=UUID=2683175a-29fc-4a59-a239-87bdf6add55f rw rootfstype=ext4 systemd.unit=graphical.target"
+}
+
+menuentry Arch-Ether {
+	icon EFI/refind/icons/os_arch.icns
+	volume Root
+	loader boot\vmlinuz-linux-ether
+	initrd boot\initramfs-linux-ether.img
+	options "root=/dev/sda3 acpi_backlight=vendor resume=UUID=2683175a-29fc-4a59-a239-87bdf6add55f rw rootfstype=ext4 systemd.unit=graphical.target"
+}
