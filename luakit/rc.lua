@@ -47,7 +47,7 @@ require "webview"
 webview.init_funcs.magnet_hook = function (view, w)
     view:add_signal("navigation-request", function (v, uri)
         if string.match(string.lower(uri), "^magnet:") then
-            luakit.spawn(string.format("/home/allie/config/scripts/torrent %q", uri))
+            luakit.spawn(string.format("/home/allie/config/bin/torrent %q", uri))
             return false
         end
     end)

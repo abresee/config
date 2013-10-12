@@ -11,7 +11,7 @@ menuentry Arch {
 	volume Root
 	loader boot\vmlinuz-linux
 	initrd boot\initramfs-linux.img
-	options "root=/dev/sda3 acpi_backlight=vendor resume=UUID=2683175a-29fc-4a59-a239-87bdf6add55f rw rootfstype=ext4 systemd.unit=graphical.target"
+	options "root=UUID=63710ccc-f0a5-4163-97c6-558163266a6a rw rootfstype=ext4 systemd.unit=graphical.target"
 }
 
 menuentry Arch-CK {
@@ -19,7 +19,7 @@ menuentry Arch-CK {
 	volume Root
 	loader boot\vmlinuz-linux-ck
 	initrd boot\initramfs-linux-ck.img
-	options "root=/dev/sda3 acpi_backlight=vendor elevator=bfq resume=UUID=2683175a-29fc-4a59-a239-87bdf6add55f rw rootfstype=ext4 systemd.unit=graphical.target"
+	options "root=UUID=63710ccc-f0a5-4163-97c6-558163266a6a rw rootfstype=ext4 systemd.unit=graphical.target"
 }
 
 menuentry Arch-Ether {
@@ -27,5 +27,5 @@ menuentry Arch-Ether {
 	volume Root
 	loader boot\vmlinuz-linux-ether
 	initrd boot\initramfs-linux-ether.img
-	options "root=/dev/sda3 acpi_backlight=vendor resume=UUID=2683175a-29fc-4a59-a239-87bdf6add55f rw rootfstype=ext4 systemd.unit=graphical.target"
+	options "root=UUID=63710ccc-f0a5-4163-97c6-558163266a6a rw rootfstype=ext4 systemd.unit=graphical.target"
 }
