@@ -36,7 +36,11 @@ import Data.Ratio ((%))
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
-myTerminal = "urxvt -e fish"
+myTerminal      =   "lilyterm -e fish"
+myFiler         =   "pcmanfm"
+myBrowser       =   "luakit"
+myScreenshooter =   "scrot -e 'mv $f ~/screenshots/'"
+
 modm = mod4Mask
 myXmonadBar = "dzen2 -fn 'xft:Liberation Mono:pixelsize=11:hinting=true:antialias=true' -x '0' -y '0' -h '14' -w '960' -ta 'l' -bg '#1B1D1E' -fg '#FFFFFF'"
 myStatusBar = "conky -c /home/allie/config/dzen2/conky_dzen | dzen2 -fn 'xft:Liberation Mono:pixelsize=11:hinting=true:antialias=true' -x '960' -y '0' -w '960' -h '14' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
@@ -63,6 +67,10 @@ colorWhite          = "#CCCCC6"
 colorNormalBorder   = "#CCCCC6"
 colorFocusedBorder  = "#FD971F"
 
+tallIcon        = "^i(" ++ myBitmapsDir ++ "/tall.xbm)"
+mirrorTallIcon  = "^i(" ++ myBitmapsDir ++ "/mtall.xbm)"
+fullIcon        = "^i(" ++ myBitmapsDir ++ "/full.xbm)"
+
 myLogHook :: Handle -> X ()
 myLogHook h = dynamicLogWithPP $ defaultPP {
         ppCurrent           = dzenColor colorOrange colorDarkGray . wrap "[" "]",
@@ -70,16 +78,15 @@ myLogHook h = dynamicLogWithPP $ defaultPP {
         ppUrgent            = dzenColor "red" colorYellow,
         ppLayout = dzenColor "#ebac54" "#1B1D1E" .
             (\x -> case x of
-                "Hinted ResizableTall"        -> "^i(" ++ myBitmapsDir ++ "/tall.xbm)"
-                "Hinted Mirror ResizableTall"  -> "^i(" ++ myBitmapsDir ++ "/mtall.xbm)"
-                "Hinted Full"                  -> "^i(" ++ myBitmapsDir ++ "/full.xbm)"
-                "Hinted Simple Float"          -> "~"
+                "Hinted ResizableTall"          -> tallIcon
+                "Hinted Mirror ResizableTall"   -> mirrorTallIcon
+                "Hinted Full"                   -> fullIcon
+                "Hinted Simple Float"           -> "~"
                 _                       -> x
             ),
         ppTitle = (" " ++) . dzenColor "white" "#1B1D1E" . dzenEscape,
         ppOutput = hPutStrLn h
     }
-
 
 xftFont  = "xft: inconsolata-14"
 barXFont = "inconsolata:size=12"
@@ -107,9 +114,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
     ((modMask .|. shiftMask,    xK_Return   ), spawn $ XMonad.terminal conf),
     ((modMask .|. shiftMask,    xK_c        ), kill),
     ((modMask .|. shiftMask,    xK_l        ), spawn "slock"),
-    ((0,                        xK_Print    ), spawn "scrot -e 'mv $f ~/screenshots/'"),
-    ((modMask,                  xK_o        ), spawn "luakit"),
-    ((modMask,                  xK_f        ), spawn "pcmanfm"),
+    ((0,                        xK_Print    ), spawn myScreenshooter),
+    ((modMask,                  xK_o        ), spawn myBrowser),
+    ((modMask,                  xK_f        ), spawn myFiler),
     ((modMask,                  xK_space    ), sendMessage NextLayout),
     ((modMask .|. shiftMask,    xK_space    ), setLayout $ XMonad.layoutHook conf),
     ((modMask .|. shiftMask,    xK_b        ), sendMessage ToggleStruts),
