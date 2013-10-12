@@ -1,0 +1,12 @@
+#
+# /etc/hosts: static lookup table for host names
+#
+
+#<ip-address>	<hostname.domain.org>	<hostname>
+127.0.0.1	    localhost.localdomain	localhost
+::1             localhost.localdomain	localhost
+localhost       allie-lap.localdomain	allie-lap	
+192.168.1.201	allie-desk.localdomain	allie-desk
+199.180.249.204 vps.postzine.org	    vps
+
+# End of file

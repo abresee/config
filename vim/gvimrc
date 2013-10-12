@@ -1,0 +1,3 @@
+" ~/.vim/gvimrc
+colorscheme evening
+set guifont=Liberation\ Mono
