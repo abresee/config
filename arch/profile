@@ -4,7 +4,7 @@
 umask 022
 
 # Set our default path
-PATH="/usr/lib/qt/bin:/home/allie/.cabal/bin:/usr/local/sbin:/usr/local/bin:/usr/bin"
+PATH="/usr/lib/qt/bin:/home/allie/.cabal/bin:/home/allie/.gem/ruby/2.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin"
 export PATH
 
 # Load profiles from /etc/profile.d

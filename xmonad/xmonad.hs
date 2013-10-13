@@ -105,12 +105,9 @@ myLocker        =   "slock"
 myXmonadBar = "dzen2 -fn 'xft:Liberation Mono:pixelsize=11:hinting=true:antialias=true' -x '0' -y '0' -h '14' -w '960' -ta 'l' -bg '#1B1D1E' -fg '#FFFFFF'"
 myStatusBar = "conky -c /home/allie/config/dzen2/conky_dzen | dzen2 -fn 'xft:Liberation Mono:pixelsize=11:hinting=true:antialias=true' -x '960' -y '0' -w '960' -h '14' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
 
-disableHDMI = "xrandr --output HDMI1 --off"
-disableVGA = "xrandr --output VGA1 --off"
-
-setupHDMI = "xrandr --output HDMI1 --auto"
-setupVGA = "xrandr --output VGA1 --auto && xrandr --output VGA1 --left-of HDMI1"
-
+disableLeftScreen = "xrandr --output HDMI1 --off"
+setupDisplays=  "xrandr --output HDMI1 --auto --output HDMI2 --right-of HDMI1"
+myRestart = "/home/allie/.cabal/bin/xmonad --recompile && killall conky dzen2 && /home/allie/.cabal/bin/xmonad --restart"
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
     ((modMask,                  xK_p        ), runOrRaisePrompt largeXPConfig),
     ((modMask,                  xK_u        ), runOrRaisePrompt mXPConfig),
@@ -120,8 +117,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
     ((0,                        xK_Print    ), spawn myScreenshooter),
     ((modMask,                  xK_o        ), spawn myBrowser),
     ((modMask,                  xK_f        ), spawn myFiler),
-    ((modMask,                  xK_m        ), spawn setupVGA),
-    ((modMask .|. shiftMask,    xK_m        ), spawn disableVGA),
+    ((modMask,                  xK_m        ), spawn setupDisplays),
+    ((modMask .|. shiftMask,    xK_m        ), spawn disableLeftScreen),
     ((modMask,                  xK_space    ), sendMessage NextLayout),
     ((modMask .|. shiftMask,    xK_space    ), setLayout $ XMonad.layoutHook conf),
     ((modMask .|. shiftMask,    xK_b        ), sendMessage ToggleStruts),
@@ -142,7 +139,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
     ((modMask .|. controlMask,  xK_Left     ), prevWS),
     ((modMask .|. shiftMask,    xK_Left     ), shiftToPrev),
     ((modMask .|. shiftMask,    xK_q        ), io (exitWith ExitSuccess)),
-    ((modMask,                  xK_q        ), spawn "killall conky dzen2 && /home/allie/.cabal/bin/xmonad --recompile && /home/allie/.cabal/bin/xmonad --restart")] ++
+    ((modMask,                  xK_q        ), spawn myRestart)] ++
     [((m .|. modMask, k), windows $ f i) |
         (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9],
         (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]] ++

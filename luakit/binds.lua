@@ -421,9 +421,9 @@ add_binds("normal", {
         local view = w.view
         local uri = view.hovered_uri or view.uri
         if uri then
-            cmd = "cclive -s best --filename-format '%%t.%%s' --output-dir %q %q"
-            luakit.spawn(string.format(cmd, os.getenv("HOME") .. "/vidsave", uri)) 
-        end 
+            cmd = "youtube-dl -o '%q/vidsave/%%(title)s-%%(id)s.%%(ext)s' %q"
+            luakit.spawn(string.format(cmd, os.getenv("HOME"), uri))
+        end
     end),
 
     -- Enter passthrough mode
