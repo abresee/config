@@ -41,12 +41,12 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
-  scons -j 8 V=1 swiften_dll=1 Swiften SWIFTEN_INSTALLDIR=${pkgdir}/usr/local force-configure=1
+  scons V=1 swiften_dll=1 Swiften SWIFTEN_INSTALLDIR=${pkgdir}/usr/local force-configure=1
 }
 
 
 package() {
   cd "$srcdir/$_gitname-build"
-  scons -j 8 V=1 swiften_dll=1 Swiften SWIFTEN_INSTALLDIR=${pkgdir}/usr ${pkgdir}/usr
+  scons V=1 swiften_dll=1 Swiften SWIFTEN_INSTALLDIR=${pkgdir}/usr ${pkgdir}/usr
 }
 # vim:set ts=2 sw=2 et:
