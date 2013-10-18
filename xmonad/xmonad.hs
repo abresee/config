@@ -97,16 +97,16 @@ largeXPConfig = mXPConfig {
 }
 
 myTerminal      =   "lilyterm -e fish"
-myFiler         =   "pcmanfm"
+myFiler         =   "nautilus"
 myBrowser       =   "luakit"
 myScreenshooter =   "scrot -e 'mv $f ~/screenshots/'"
 myLocker        =   "slock"
 
-myXmonadBar = "dzen2 -fn 'xft:Liberation Mono:pixelsize=11:hinting=true:antialias=true' -x '0' -y '0' -h '14' -w '960' -ta 'l' -bg '#1B1D1E' -fg '#FFFFFF'"
-myStatusBar = "conky -c /home/allie/config/dzen2/conky_dzen | dzen2 -fn 'xft:Liberation Mono:pixelsize=11:hinting=true:antialias=true' -x '960' -y '0' -w '960' -h '14' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
+myXmonadBar = "dzen2 -fn 'Monospace:pixelsize=11' -x '0' -y '0' -h '14' -w '960' -ta 'l' -bg '#1B1D1E' -fg '#FFFFFF'"
+myStatusBar = "conky -c /home/allie/config/dzen2/conky_dzen | dzen2 -fn 'Monospace:pixelsize=11' -x '960' -y '0' -w '960' -h '14' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
 
 disableLeftScreen = "xrandr --output HDMI1 --off"
-setupDisplays=  "xrandr --output HDMI1 --auto --output HDMI2 --right-of HDMI1"
+setupDisplays=  "xrandr --output HDMI1 --left-of HDMI2"
 myRestart = "/home/allie/.cabal/bin/xmonad --recompile && killall conky dzen2 && /home/allie/.cabal/bin/xmonad --restart"
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
     ((modMask,                  xK_p        ), runOrRaisePrompt largeXPConfig),
