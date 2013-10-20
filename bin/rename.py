@@ -8,7 +8,8 @@ src_dir = argv[1]
 go = None
 if len(argv)> 2:
     go = bool(argv[2])
-src_pattern = regex(r'The Simpsons - S(?P<season>\d{2})E(?P<episode>\d{2}) - (?P<title>[^\.]*)\.(?P<ext>\w+)')
+src_pattern = regex(r'The Simpsons \[(?P<season>\d{1,2})x(?P<episode>\d{2})\] (?P<title>.*)\.(?P<ext>\w+)$')
+#src_pattern = regex(r'(?P<season>\d{2})x(?P<episode>\d{2}) - (?P<title>.*)\.(?P<ext>\w+)$')
 
 dest_template = "{n} - {t}.{e}"
 transform = {}
@@ -18,7 +19,7 @@ season, ext = None, None
 for filename in listdir(src_dir):
     m = src_pattern.match(filename)
     if m:
-        transform[filename]     = m.group("episode","title","ext")
+        transform[filename] = m.group("episode","title","ext")
         if not season:
             season = m.group("season")
         else:
@@ -26,7 +27,7 @@ for filename in listdir(src_dir):
         if not ext:
             ext = m.group("ext")
         else:
-            assert ext == m.group("ext")
+            assert ext == m.group("ext"), (ext,filename)
 
 renames = {src : dest_template.format(n=num, t=title, e=ext) for src, (num, title, ext) in transform.items()}
 dest_dir = "S{s} {e}".format(s=season,e=ext)

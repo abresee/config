@@ -4,3 +4,5 @@
 	name = abresee
 [push]
 	default = simple
+[merge]
+	tool = gvimdiff
