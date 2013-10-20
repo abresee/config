@@ -101,6 +101,7 @@ myFiler         =   "nautilus"
 myBrowser       =   "luakit"
 myScreenshooter =   "scrot -e 'mv $f ~/screenshots/'"
 myLocker        =   "slock"
+toggleTrackpad = "/home/allie/config/bin/toggle-trackpad.sh"
 
 myXmonadBar = "dzen2 -fn 'Monospace:pixelsize=11' -x '0' -y '0' -h '14' -w '683' -ta 'l' -bg '#1B1D1E' -fg '#FFFFFF'"
 myStatusBar = "conky -c /home/allie/config/dzen2/conky_dzen | dzen2 -fn 'Monospace:pixelsize=11' -x '683' -y '0' -w '960' -h '14' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' "
@@ -119,6 +120,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $ [
     ((modMask,                  xK_f        ), spawn myFiler),
     ((modMask,                  xK_m        ), spawn setupDisplays),
     ((modMask .|. shiftMask,    xK_m        ), spawn disableLeftScreen),
+    ((modMask .|. shiftMask,    xK_z        ), spawn toggleTrackpad),
     ((modMask,                  xK_space    ), sendMessage NextLayout),
     ((modMask .|. shiftMask,    xK_space    ), setLayout $ XMonad.layoutHook conf),
     ((modMask .|. shiftMask,    xK_b        ), sendMessage ToggleStruts),
