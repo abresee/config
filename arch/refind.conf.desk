@@ -2,13 +2,13 @@ timeout 5
 resolution 1920 1080
 use_graphics_for linux
 default_selection Arch-CK
-
+lrwxrwxrwx 1 root root  10 Oct 23 16:05 a77b06fc-7fcd-4a27-9c13-3a2c1ee9beee -> ../../sda2
 menuentry Arch {
 	icon EFI/refind/icons/os_arch.icns
 	volume Root
 	loader boot\vmlinuz-linux
 	initrd boot\initramfs-linux.img
-	options "root=UUID=b07e9036-c4e2-4b37-9f12-f2c695a1c1b5 rw rootfstype=ext4 systemd.unit=graphical.target"
+	options "root=UUID=a77b06fc-7fcd-4a27-9c13-3a2c1ee9beee rw rootfstype=ext4 systemd.unit=graphical.target"
 }
 
 menuentry Arch-CK {
@@ -16,5 +16,5 @@ menuentry Arch-CK {
 	volume Root
 	loader boot\vmlinuz-linux-ck
 	initrd boot\initramfs-linux-ck.img
-	options "root=UUID=b07e9036-c4e2-4b37-9f12-f2c695a1c1b5 rw rootfstype=ext4 systemd.unit=graphical.target elevator=bfq"
+	options "root=UUID=a77b06fc-7fcd-4a27-9c13-3a2c1ee9beee rw rootfstype=ext4 systemd.unit=graphical.target elevator=bfq"
 }
