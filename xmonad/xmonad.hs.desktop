@@ -97,7 +97,7 @@ largeXPConfig = mXPConfig {
 }
 
 myTerminal      =   "lilyterm -e fish"
-myFiler         =   "nautilus"
+myFiler         =   "thunar"
 myBrowser       =   "luakit"
 myScreenshooter =   "scrot -e 'mv $f ~/screenshots/'"
 myLocker        =   "slock"

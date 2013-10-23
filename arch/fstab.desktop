@@ -1,0 +1,8 @@
+# UUID=a77b06fc-7fcd-4a27-9c13-3a2c1ee9beee LABEL=Root
+/dev/sda2           	/         	ext4      	rw,relatime,data=ordered	0 1
+
+# UUID=86B3-BE43 LABEL=EFISYS
+/dev/sda1           	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro	0 2
+
+# UUID=ff330441-2dec-4ca8-8d41-b7fe7a500733 
+/dev/sdc1               /mnt/store  ext4        rw,relatime,data=ordered    0 2
