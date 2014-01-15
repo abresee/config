@@ -1,8 +1,12 @@
-# UUID=a77b06fc-7fcd-4a27-9c13-3a2c1ee9beee LABEL=Root
-/dev/sda2           	/         	ext4      	rw,relatime,data=ordered	0 1
+# 
+# /etc/fstab: static file system information
+# /dev/sda2
+UUID=db171c37-bb94-4f93-a449-2fdbef7a0c5c   /           btrfs       rw,relatime,ssd,space_cache 0 0
 
-# UUID=86B3-BE43 LABEL=EFISYS
-/dev/sda1           	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro	0 2
+# /dev/sda1 LABEL=EFISYS
+UUID=86B3-BE43                              /boot/efi   vfat        rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro    0 2
 
-# UUID=ff330441-2dec-4ca8-8d41-b7fe7a500733 
-/dev/sdc1               /mnt/store  ext4        rw,relatime,data=ordered    0 2
+# /dev/sda3
+UUID=ef34e983-0b37-43c3-80f2-79bd50f0213a   none        swap        defaults                    0 0
+
+UUID=ff330441-2dec-4ca8-8d41-b7fe7a500733   /mnt/store  ext4        rw,relatime,data=ordered    0 2
